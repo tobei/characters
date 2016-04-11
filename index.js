@@ -25,8 +25,11 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
             const document = new ChineseDocument();
             document.pipe(res);
 
-            for (const character of characterList) {
-                document.character(character);
+            for (let [index, character] of characterList.entries()) {
+                document.character(character, Math.floor(index / 10) % 10, index % 10);
+                if (index != 0 && index % 100 == 0) {
+                    document.addPage();
+                }
             }
 
             document.end();

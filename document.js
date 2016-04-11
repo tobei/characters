@@ -17,22 +17,27 @@ class ChineseDocument extends PDF {
     }
 
 
-    character(character) {
+    character(character, line, column) {
         if (this.counter++ % 120 == 0) {
             delete this._fontFamilies['KaiTi'];
             this.registerFont(`simkai_${++this.sequence}`, 'simkai.ttf');
         }
         this.font(`simkai_${this.sequence}`);
         this.fontSize(32);
-        console.log(character.character + ' ' + character.pinyin);
-        console.log(character.character + ' ' + character.pinyin[0]);
+        //console.log(character.character + ' ' + character.pinyin);
+        //console.log(character.character + ' ' + character.pinyin[0]);
         //this.fillColor(this.colors[this._tone(character.pinyin[0])]);
+
+        this.x = column * 50;
+        this.y = line * 50;
+
+
         this.text(character.character);
 
-        this.font('calibri.ttf');
-        this.fontSize(10);
-        this.fillColor('black');
-        this.text(character.pinyin);
+        //this.font('calibri.ttf');
+        //this.fontSize(10);
+        //this.fillColor('black');
+        //this.text(character.pinyin);
     }
 
     _tone(pinyin) {
