@@ -7,26 +7,24 @@ class ChineseDocument extends PDF {
         super({size: 'A4'});
         this.counter = 0;
         this.sequence = 0;
-        this.registerFont('calibri', './calibri.ttf');
     }
 
-    chinese(size, color) {
-        if (this.counter++ % 50 == 0) {
+    character(character) {
+        if (this.counter++ % 120 == 0) {
             delete this._fontFamilies['KaiTi'];
-            this.sequence++;
-            this.registerFont(`simkai_${this.sequence}`, './simkai.ttf');
+            this.registerFont(`simkai_${++this.sequence}`, 'simkai.ttf');
         }
         this.font(`simkai_${this.sequence}`);
-        this.fontSize(size);
-        this.fillColor(color);
+        this.fontSize(32);
+        this.fillColor('red');
+        this.text(character.character);
+
+        this.font('calibri.ttf');
+        this.fontSize(10);
+        this.fillColor('black');
+        this.text(character.pinyin);
     }
 
-
-    pinyin(size, color) {
-        this.font("calibri");
-        this.fontSize(size);
-        this.fillColor(color);
-    }
 }
 
 module.exports = ChineseDocument;

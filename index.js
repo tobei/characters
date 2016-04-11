@@ -19,15 +19,16 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
         }
     })
     .on("end",() => {
-        console.log(JSON.stringify([...characters.entries()]));
+        const characterList = [...characters.values()];
         const app = express();
         app.get('/', (req, res) => {
-            res.send(characters);
-        });
-        app.get('/download', (req, res) => {
             const document = new ChineseDocument();
             document.pipe(res);
-            document.text('点');
+
+            for (const character of characterList) {
+                document.character(character);
+            }
+
             document.end();
         });
         app.listen(80);
