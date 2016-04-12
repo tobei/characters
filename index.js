@@ -20,18 +20,13 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
     })
     .on("end",() => {
         const characterList = [...characters.values()];
+        console.log(characterList.length);
         const app = express();
         app.get('/', (req, res) => {
-            const document = new ChineseDocument();
+            console.log(characterList.length);
+            const document = new ChineseDocument(30, 20);
             document.pipe(res);
-            for (let [index, character] of characterList.entries()) {
-                if (index > 0 && index % 100 == 0) {
-                    document.addPage();
-                }
-                document.character(character, Math.floor(index / 10) % 10, index % 10);
-            }
-
-            document.end();
+            document.render(characterList);
         });
         app.listen(80);
     })

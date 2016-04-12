@@ -3,7 +3,7 @@
 const PDF = require('pdfkit');
 
 class ChineseDocument extends PDF {
-    constructor() {
+    constructor(lines, columns) {
         super({size: 'A4'});
         this.colors = {
             '1': 'cornflowerblue',
@@ -12,38 +12,59 @@ class ChineseDocument extends PDF {
             '4': 'indianred',
             '5': 'lightslategray'
         }
+        this.grid = {
+            lines: lines,
+            columns: columns
+        }
+        this.offsets = {
+            margin: {
+                horizontal: 30,
+                vertical: 30
+            },
+            padding: {
+                horizontal: 0,
+                vertical: 0
+            }
+        }
+        this.metrics = {
+            width: Math.floor((595 - 2 * this.offsets.margin.horizontal) / this.grid.columns),
+            height: Math.floor((842 - 2 * this.offsets.margin.vertical) / this.grid.lines)
+        }
         this.counter = 0;
         this.sequence = 0;
     }
 
+    render(iterable) {
+        let index = 0;
+        let pageSize = this.grid.lines * this.grid.columns;
+        for (let character of iterable) {
+            if (index > 0 && index % pageSize == 0) {
+                this.addPage();
+            }
+            let position = {
+                line: Math.floor(index / this.grid.columns) % this.grid.lines,
+                column: index % this.grid.columns
+            }
+            this.x = this.offsets.margin.horizontal + position.column * this.metrics.width;
+            this.y = this.offsets.margin.vertical + position.line * this.metrics.height;
+            this._character(character);
+            index++;
+        }
+        this.end();
+    }
 
-    character(character, line, column) {
+
+    _character(character) {
         if (this.counter++ % 120 == 0) {
             delete this._fontFamilies['KaiTi'];
             this.registerFont(`simkai_${++this.sequence}`, 'simkai.ttf');
         }
         this.font(`simkai_${this.sequence}`);
-        this.fontSize(32);
-        //console.log(character.character + ' ' + character.pinyin);
-        //console.log(character.character + ' ' + character.pinyin[0]);
-        //this.fillColor(this.colors[this._tone(character.pinyin[0])]);
-
-        this.x = column * 50;
-        this.y = line * 50;
-
-        console.log(`${character.character} at line ${line}, column ${column}`);
-        this.text(character.character);
-
-        //this.font('calibri.ttf');
-        //this.fontSize(10);
-        //this.fillColor('black');
-        //this.text(character.pinyin);
+        this.fontSize(18);
+        console.log(`character ${character.character} usages ${character.words.size}`);
+        this.fillColor([Math.floor(character.words.size / 6 * 255), 0, 0]);
+        this.text(character.character, {lineBreak: false});
     }
-
-    _tone(pinyin) {
-        return pinyin.charAt(pinyin.length - 1);
-    }
-
 }
 
 module.exports = ChineseDocument;
