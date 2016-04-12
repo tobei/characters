@@ -31,7 +31,7 @@ class ChineseDocument extends PDF {
         this.x = column * 50;
         this.y = line * 50;
 
-
+        console.log(`${character.character} at line ${line}, column ${column}`);
         this.text(character.character);
 
         //this.font('calibri.ttf');

@@ -24,12 +24,11 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
         app.get('/', (req, res) => {
             const document = new ChineseDocument();
             document.pipe(res);
-
             for (let [index, character] of characterList.entries()) {
-                document.character(character, Math.floor(index / 10) % 10, index % 10);
-                if (index != 0 && index % 100 == 0) {
+                if (index > 0 && index % 100 == 0) {
                     document.addPage();
                 }
+                document.character(character, Math.floor(index / 10) % 10, index % 10);
             }
 
             document.end();
