@@ -1,4 +1,4 @@
-一	yi1	NUM. 1 one; 1 2 once 可一不可二。 kě yī bùkě èr. Once is forgivable, not twice.  B.F. 1 each; per 一桌八人 Yī zhuō bā rén eight people per table 2 whole; all; throughout 我一天都不在家。 Wǒ yī tiān dōu bụ̀ zài jiā. I won't be at home all day. 3 single; alone 4 same 意见不一 yìjian bù yī opinions differ  ADV. 1 as soon as 天气一冷 tiānqì yī lěng as soon as the weather turns cold 2 a little 看一看 kànyīkàn take a look 3 “empty” adverb in four-syllable expressions 为之一振 wèizhīyīzhèn be buoyed up by it 4 also; otherwise 一名 Yī míng be also known as  CONS. 1 ∼ A jiù B as soon as A (then) B 2 ∼ A èr B a very AB, where AB is a two-syllable s.v. 一清二静 Yī qīng èr jìng absolutely quiet b one or two AB, where AB is a noun 一差二错 Yī chà èr cuò one or two mistakes 3 ∼ A bàn A/B a little of A and of A or B, where A and B are identical or similar in meaning 这个工程可不是一天半天能完的。 Zhège gōngchéng kě bụ̀ shì yī tiān bàn tiān néng wán de. This project can't be finished in a short time. 4 ∼ V1 ér V2 V2 immediately after V1 一怒而去 Yīnù'érqù flare up and leave 5 ∼ N (yě) bù/méi V not V even one N; without omitting a single N 一字不漏 Yīzìbụ̀lòu without omitting a single character 6 V ∼ VM V a VM 咬一口 yǎo yī kǒu take a bite 7 ∼ V1 bù V2 inalterably V1 一去不返 Yī qù bù fǎn gone never to return 8 ∼ N1 ∼ N2 a all or the whole of N1/N2 一生一世 Yīshēngyīshì all one's life b each/every N1/N2 一言一行 Yīyányīxíng every word and deed 9 ∼ V1 ∼ V2 a do V1/V2 in succession (where V1/V2 are similar in meaning) 一蹦一跳 Yībèngyītiào skip and jump b do V1/V2 alternately (where V1/V2 contrast in meaning) 一问一答 Yīwènyīdá one asks and the other answers 10 ∼ A ∼ B one A, one B (where A/B are opposite in meaning) 一东一西 Yī dōng yī xī one east, one west ∼ V ²zài V keep on doing V 一错再错 Yīcuòzàicuò keep on making mistakes  N. a note of the scale in gōngchěpǔ
+﻿一	yi1	NUM. 1 one; 1 2 once 可一不可二。 kě yī bùkě èr. Once is forgivable, not twice.  B.F. 1 each; per 一桌八人 Yī zhuō bā rén eight people per table 2 whole; all; throughout 我一天都不在家。 Wǒ yī tiān dōu bụ̀ zài jiā. I won't be at home all day. 3 single; alone 4 same 意见不一 yìjian bù yī opinions differ  ADV. 1 as soon as 天气一冷 tiānqì yī lěng as soon as the weather turns cold 2 a little 看一看 kànyīkàn take a look 3 “empty” adverb in four-syllable expressions 为之一振 wèizhīyīzhèn be buoyed up by it 4 also; otherwise 一名 Yī míng be also known as  CONS. 1 ∼ A jiù B as soon as A (then) B 2 ∼ A èr B a very AB, where AB is a two-syllable s.v. 一清二静 Yī qīng èr jìng absolutely quiet b one or two AB, where AB is a noun 一差二错 Yī chà èr cuò one or two mistakes 3 ∼ A bàn A/B a little of A and of A or B, where A and B are identical or similar in meaning 这个工程可不是一天半天能完的。 Zhège gōngchéng kě bụ̀ shì yī tiān bàn tiān néng wán de. This project can't be finished in a short time. 4 ∼ V1 ér V2 V2 immediately after V1 一怒而去 Yīnù'érqù flare up and leave 5 ∼ N (yě) bù/méi V not V even one N; without omitting a single N 一字不漏 Yīzìbụ̀lòu without omitting a single character 6 V ∼ VM V a VM 咬一口 yǎo yī kǒu take a bite 7 ∼ V1 bù V2 inalterably V1 一去不返 Yī qù bù fǎn gone never to return 8 ∼ N1 ∼ N2 a all or the whole of N1/N2 一生一世 Yīshēngyīshì all one's life b each/every N1/N2 一言一行 Yīyányīxíng every word and deed 9 ∼ V1 ∼ V2 a do V1/V2 in succession (where V1/V2 are similar in meaning) 一蹦一跳 Yībèngyītiào skip and jump b do V1/V2 alternately (where V1/V2 contrast in meaning) 一问一答 Yīwènyīdá one asks and the other answers 10 ∼ A ∼ B one A, one B (where A/B are opposite in meaning) 一东一西 Yī dōng yī xī one east, one west ∼ V ²zài V keep on doing V 一错再错 Yīcuòzàicuò keep on making mistakes  N. a note of the scale in gōngchěpǔ
 一下	yi1xia4	N. one time; once  ADV. 1 in a short while; all at once; all of a sudden 我现在一下想不起来他的名字。 Wǒ xiànzài yị̄xià xiǎng bu qǐlai tā de míngzi. For the moment I can't recall his name. 2 休息一下 xiūxi yị̄xià rest a while 3 睡一下觉 shuì yị̄xià jiào nap a while
 一共	yi1gong4	ADV. altogether; in all; all told 我们一共只有四个人。 Wǒmen yị̄gòng zhị̌yǒu sì ge rén. There are only four of us altogether.
 一样	yi1yang4	S.V. the same; equally; alike 这两双鞋是一样的。 Zhèi liǎng shuāng xié shì yị̄yàng de. The two pairs of shoes are identical.  ATTR. kind; type; class 来, 我给你看一样东西。 Lái, wǒ gẹ̌i nǐ kàn yị̄yàng dōngxi. Come, I'll show you something.
@@ -1093,3 +1093,62 @@
 走路	zou3lu4	V.O. 1 walk; go on foot 2 leave; go away
 小时候	xiao3shi2hou5	N. , coll. in one's childhood; when one was young 他小时候很调皮。 Tā xiǎoshíhou hěn tiáopí. He was very naughty as a child.
 电影院	dian4ying3yuan4	cinema; movie (house)
+苦	ku3	S.V. 1 bitter 2 excessive  N. hardship; suffering; pain  V. 1 cause sb. suffering 2 suffer from; be troubled by  ADV. painstakingly
+病房	bing4fang2	P.W. , med. hospital ward; sickroom M: jiān / 间
+错	cuo4	V. 1 be interlocked 2 rub 3 miss; let slip 4 evade; dodge 5 alternate; stagger  S.V. 1 wrong; mistaken 我弄错了。 Wǒ nòngcuò le. I've got it wrong. 2 bad; poor 3 confused; complex  N. 1 mistake; error; blunder 这是谁的错? Zhè shì shéi de cuò? Whose mistake is it? 2 grindstone
+不错	bu4cuo4	S.V. 1 correct; right 一点儿不错 yī̠diǎnr bụ̀cuò perfectly correct 2 yes 3 coll. not bad; pretty good
+租	zu1	V. rent; lease 我要租房子。 Wǒ yào zū fángzi. I am going to rent a house.  B.F. 1 land tax in zūshuì 2 rent in zūjīn , fángzū
+骑	qi2	V. ride/sit astride  B.F. cavalry; cavalryman in ¹qíshì
+骑马找马	qi2ma3zhao3ma3	ID. 1 look for a better job while holding on to the present one 2 look for sth. that's right under one's nose
+钱包	qian2bao1	N. purse; wallet
+找不到	zhao3bu5dao4	R.V. can't find
+找得到	zhao3de5dao4
+房	fang2	B.F. 1 house in fángzi 2 room in fángjiān 3 house-like structure  N. 1 Surname 2 name of a constellation  M. branch of a family
+房子	fang2zi5	P.W. 1 house; building (of less than three stories) 2 room/apartment/etc.
+房东	fang2dong1	N. landlord; owner of the house one lives in M: ²wèi / míng / ge / 位 / 名 / 个
+国家	guo2jia1	N. country; state; nation
+药房	yao4fang2	P.W. 1 drugstore; pharmacy 2 hospital pharmacy; dispensary M: jiā / 家
+出租汽车	chu1zu1 qi4che1	N. , PRC taxi M: ³liàng / 辆
+租房	zu1fang2
+租房子	zu1 fang2 zi5
+房租	fang2zu1	N. rent (for a house/flat/etc.)
+套	tao4	B.F. 1 sheath; case; cover; sleeve in tàozi 2 bend; curve (of rivers/etc.) in hétào 3 padding; batting in bèitào 4 traces; harness 5 knot; noose; trap 6 cliché; formula  V. 1 encase 2 overlap; interlink 3 harness; hitch up 4 model on/after; copy 5 pump sb. about sth.  M. (for sets/series/suites/etc.)
+手套	shou3tao4	N. 1 glove 2 mitten M: fù / 副
+外套	wai4tao4	N. 1 overcoat 2 loose coat; outer garment 3 jacket 4 shell M: ²jiàn / 件
+豆	dou4	N. 1 legumes; pulses; beans; peas 2 ancient stemmed cup 3 hemispherical fruit bowl
+厨	chu2	B.F. 1 kitchen in chúfáng 2 a cook in ¹chúshī
+厨师	chu2shi1	N. cook; chef M: ²wèi / 位
+女厕所	nü3ce4suo3	P.W. ladies' (rest)room; women's lavatory/toilet 女厕所在哪儿? Nǚcèsuǒ zài nǎr? Where is the ladies' restroom? M: jiān / ⁴zuò / 间 / 座
+男厕所	nan2ce4suo3	P.W. men's restroom 男厕所在哪儿? Náncèsuǒ zài nǎr? Where's the men's room? M: jiān / 间
+上厕所	shang4 ce4suo3	V.O. go to the toilet
+公厕	gong1ce4	AB.  | P.W. gōnggòng cèsuǒ public lavatory M: ge / suǒ / ⁴zuò / 个 / 所 / 座
+公用	gong1yong4	ATTR. 1 for public use 厨房是公用的。 Chúfáng shì gōngyòng de. The kitchen is shared. 2 communal
+公用电话	gong1yong4 dian4hua4	N. public telephone M: ge / tái / 个 / 台
+司	si1	B.F. take charge of; attend to; manage in ¹sījī , ¹gōngsī  N. 1 department (under a ministry) 2 Surname
+月	yue4	N. month  B.F. 1 moon in yuèliang 2 monthly in yuèkān , ¹yuèxīn
+医院	yi1yuan4	P.W. hospital M: jiā / 家
+块	kuai4	M. 1 piece; lump; chunk 2 Ch. “dollar”  B.F. piece in tǔkuài  N. , comp. block
+一点儿	yi1dian3er5
+等等	deng3deng5	R.F. wait a minute
+怎么办	zen3me5 ban4	V.P. What to do now?; What should I do? What's to be done?
+办	ban4	V. 1 do; handle; manage 办入学手续 Bàn rùxué shǒuxù go through admission procedures 2 set up; run 办工厂 Bàn gōngchǎng run a factory 3 buy a fair amount of 4 punish (by law); beat up 这事儿一定要严办。 Zhè shìr yị̄dìng yào ⁴yán bàn. This must be dealt with severely.
+没办法	mei2 ban4fa3	V.O.  | S.V. have no solution; have no way out
+办法	ban4fa3	N. way; means; measure 原则没错, 可是办法不对。 Yuánzé méi cuò, kěshì bànfǎ bụ̀duì. There's nothing wrong with the theory, but the practical method is wrong.
+好办	hao3ban4	S.V. easy to handle
+说话	shuo1hua4	V.O. 1 speak; talk; say; chat 开会时不能说话。 Kāihuì ²shí bùnéng shuōhuà. One must not chat during a meeting. 2 gossip 3 tell stories  ADV. , coll. in a minute; right away 说话就得。 Shuōhuà jiù dé. It'll be ready in a jiffy.  N. 1 word; talk 说话要和气。 Shuōhuà yào héqi. One should speak softly. 2 trad. a kind of storytelling popular in Tang and Song times
+什么话	shen2me5 hua4	PR. 1 What nonsense!; Bosh! 2 How can you say that?; How can you do this?
+白话	bai2hua5	N. , lg. colloquial speech  V. , coll. use colloquial speech See also ¹báihuà báihuo
+白	bai2	S.V. 1 white 2 clear  B.F. 1 pure; plain in báifàn 2 free of charge in báisòng 3 wrongly written/mispronounced in báizì 4 colloquial; vernacular in ¹báihuà 5 state in biǎobái 6 “white” (anticommunist) in báiqū  ADV. in vain; for nothing  N. 1 spoken part in opera 2 Surname  V. 1 turn white prematurely 他头发全白了。 Tā tóufa quán bái le. His hair turned completely white. 2 coll. look askance at See also ¹⁴bó
+让	rang4	V. 1 yield 他不让人。 Tā bụ̀ ràng rén. He does not yield to others. 2 allow 妈妈不让我去。 Māma bụ̀ ràng wǒ qù. My mom won't let me go. 3 induce sb. to do sth. a 谁让你来的? Shuí ràng nǐ lái de? Who told you to come? b 她让客人就座。 ²Tā ràng kèren jiùzuò. She invited guests to sit at table. 4 transfer possession of sth. 5 offer  COV. (passive signifier) by 行李让雨给淋湿了。 Xíngli ràng yụ̌ gěi línshī le. The luggage was soaked by rain.  CONS. N ∼ ¹rén V N makes one V 主任让他去开会。 Zhǔrèn ràng tā qù kāihuì. The director wants him to go to the meeting.
+市场	shi4chang3	P.W. market; bazaar
+喂	wei4	V. feed 喂孩子 Wèi háizi spoon feed the child  INTJ. hello; hey
+地位	di4wei4	N. position; status
+还有	hai2 you3	V.P. there is still some left 1 除了这些, 还有吗? Chúle zhèxiē, hái yǒu ma? Are there still some left apart from these? 2 还有一个问题要问。 Hái yǒu yị̄ ge wèntí yào wèn. I'd like to ask one more question. See also ²háiyǒu
+办公室	ban4gong1shi4	N. office
+室	shi4	B.F. 1 room in ¹wòshì , ¹jiàoshì 2 house; building in ¹shìnèi 3 work unit 4 chamber in ²xīnshì 5 wr. wife in qīshì
+客人	ke4ren5	N. 1 visitor; guest 2 traveling trader M: ²wèi / 位
+亮	liang4	S.V. 1 bright; light 天色变得越来越亮了。 Tiānsè ²biàn de yuèláiyuè liàng le. The sky is getting brighter and brighter. 2 loud and clear; sonorous 3 enlightened  V. 1 shine 2 show
+非	fei1	ADV. 1 not 2 coll. have got to; simply must 我非去! Wǒ fēi qù! I simply must go.  B.F. 1 mistake; error; wrong; evildoing 2 not conform to; run counter to 3 censure; blame  PREF. not; no; non-; un-  AB. Fēizhōu Africa  CONS. 1 ∼ ... bùkě//bùchéng//bùxíng must ...; will inevitably ... 我非去不可。 Wǒ fēi qù bùkě. I have to go. 2 ∼ A ∼ B neither A nor B 非驴非马 Fēi lǘ fēi mǎ nondescript 3 ∼ A jí B either A or B 非黑即白 Fēi hēi jí bái either black or white 4 ∼ A cái B B only if A 非他说才行。 Fēi tā shuō cái xíng. It'll only work if he says so.
+道德经	Dao4de2jing1	N. , wr. The Classic of the Virtue of the Dao M: běn / ²bù / 本 / 部
+诗经	Shi1jing1	N. Book of Songs/Odes/Poetry
+等一等	deng3 yi4 deng3
