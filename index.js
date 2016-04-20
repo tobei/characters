@@ -20,11 +20,16 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
     })
     .on("end",() => {
         const characterList = [...characters.values()];
+        const pages = 20;
+        const value = Math.sqrt(characterList.length / (pages * 1.414));
+        const columns = Math.floor(value);
+        const lines = Math.ceil(1.414 * value);
+
         console.log(characterList.length);
         const app = express();
         app.get('/', (req, res) => {
             console.log(characterList.length);
-            const document = new ChineseDocument(30, 20);
+            const document = new ChineseDocument(lines, columns);
             document.pipe(res);
             document.render(characterList);
         });

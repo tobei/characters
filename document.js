@@ -60,7 +60,8 @@ class ChineseDocument extends PDF {
             this.registerFont(`simkai_${++this.sequence}`, 'simkai.ttf');
         }
         this.font(`simkai_${this.sequence}`);
-        this.fontSize(18);
+        //console.log(Math.min(this.metrics.width, this.metrics.height));
+        this.fontSize(Math.round(0.70 * Math.min(this.metrics.width, this.metrics.height)));
         console.log(`character ${character.character} usages ${character.words.size}`);
         this.fillColor([Math.floor((character.words.size - 1) / 5 * 255), 0, 0]);
         this.text(character.character, {lineBreak: false});
