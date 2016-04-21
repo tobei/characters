@@ -20,9 +20,9 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
     })
     .on("end",() => {
         const characterList = [...characters.values()];
-        const pages = 20;
+        const pages = 1;
         const value = Math.sqrt(characterList.length / (pages * 1.414));
-        const columns = Math.floor(value);
+        const columns = Math.ceil(value);
         const lines = Math.ceil(1.414 * value);
 
         console.log(characterList.length);
