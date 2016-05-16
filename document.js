@@ -77,13 +77,19 @@ class ChineseDocument extends PDF {
             this.fillColor('black');
             this.font(`calibri.ttf`);
             this.fontSize(Math.round(0.15 * Math.min(this.metrics.width, this.metrics.height)));
-            this.text(pinyin(unihan[character.character].pinyin), {lineBreak: false, width: this.metrics.width, height: this.metrics.height, align: 'center', bold: true});
+            this.text(pinyin(unihan[character.character].pinyin), {lineBreak: false, width: this.metrics.width, height: this.metrics.height, align: 'center'});
 
             this.x = this.offsets.margin.horizontal + (position.column) * this.metrics.width;
             this.y = this.offsets.margin.vertical + (position.line + 0.75) * this.metrics.height;
             this.font(`calibri.ttf`);
             this.fontSize(Math.round(0.15 * Math.min(this.metrics.width, this.metrics.height)));
-            this.text(definition(unihan[character.character].definition), {lineBreak: true, width: this.metrics.width, height: 10, align: 'center', ellipsis: true, bold: false, italic: true});
+            this.text(definition(unihan[character.character].definition), {lineBreak: true, width: this.metrics.width, height: 10, align: 'center', ellipsis: true});
+
+            this.x = this.offsets.margin.horizontal + (position.column) * this.metrics.width;
+            this.y = this.offsets.margin.vertical + (position.line) * this.metrics.height;
+            this.font(`calibri.ttf`);
+            this.fontSize(Math.round(0.15 * Math.min(this.metrics.width, this.metrics.height)));
+            this.text(character.words.size, {lineBreak: true, width: this.metrics.width, height: 10, align: 'left', ellipsis: true});
 
             index++;
         }
