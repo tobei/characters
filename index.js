@@ -49,7 +49,7 @@ function hskLevel(hsk, word) {
     return 0;
 }
 
-fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
+fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
         words.add(word);
         for (const character of word) {

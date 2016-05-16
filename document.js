@@ -19,7 +19,6 @@ function pinyin(pinyins) {
 }
 
 function definition(definitions) {
-    console.log(definitions);
     return definitions.splice(0, 2).map(majorDefinition => {
         return majorDefinition.split(',')[0];
     }).join(',');
