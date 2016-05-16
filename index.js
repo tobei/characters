@@ -70,14 +70,14 @@ fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
         }
 
-        const pages = 1;
+        const pages = 2;
         const value = Math.sqrt(characterList.length / (pages * 1.414));
-        const columns = Math.ceil(value);
+        const columns = Math.floor(value);
         const lines = Math.ceil(1.414 * value);
         console.log(`There are ${characterList.length} distincts characters`);
         const app = express();
         app.get('/', (req, res) => {
-            const document = new ChineseDocument(lines, columns);
+            const document = new ChineseDocument(22, 15);
             document.pipe(res);
             document.render(characterList);
         });
