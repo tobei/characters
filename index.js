@@ -69,9 +69,16 @@ fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
         }
 
+        const pages = 20;
+        const value = Math.sqrt(characterList.length / (pages * 1.414));
+        const columns = Math.floor(value);
+        const lines = Math.ceil(1.414 * value);
+
+        console.log(characterList.length);
         const app = express();
         app.get('/', (req, res) => {
-            const document = new ChineseDocument();
+            console.log(characterList.length);
+            const document = new ChineseDocument(lines, columns);
             document.pipe(res);
 
             for (let [index, character] of characterList.entries()) {
@@ -81,6 +88,7 @@ fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
                 }
             }
             document.end();
+            document.render(characterList);
         });
         app.listen(80);
     })
