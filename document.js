@@ -1,6 +1,18 @@
 'use strict';
 
 const PDF = require('pdfkit');
+const unihan = require('./data.json');
+
+function tone(pinyin) {
+    const tones = [/\u0304/g, /\u0301/g, /\u030C/g, /\u0300/g];
+    let normalizedPinyin = pinyin.normalize('NFD');
+    for (let index = 0; index < 4; index++) {
+        if (tones[index].test(normalizedPinyin)) {
+            return index + 1;
+        }
+    }
+    return 0;
+}
 
 class ChineseDocument extends PDF {
     constructor(lines, columns) {
@@ -10,7 +22,7 @@ class ChineseDocument extends PDF {
             '2': 'mediumseagreen',
             '3': 'lightsalmon',
             '4': 'indianred',
-            '5': 'lightslategray'
+            '0': 'lightslategray'
         }
         this.grid = {
             lines: lines,
@@ -60,10 +72,9 @@ class ChineseDocument extends PDF {
             this.registerFont(`simkai_${++this.sequence}`, 'simkai.ttf');
         }
         this.font(`simkai_${this.sequence}`);
-        //console.log(Math.min(this.metrics.width, this.metrics.height));
         this.fontSize(Math.round(0.70 * Math.min(this.metrics.width, this.metrics.height)));
-        console.log(`character ${character.character} usages ${character.words.size}`);
-        this.fillColor([Math.floor((character.words.size - 1) / 5 * 255), 0, 0]);
+        const t = tone(unihan[character.character].pinyin[0]);
+        this.fillColor(this.colors[t]);
         this.text(character.character, {lineBreak: false});
     }
 }

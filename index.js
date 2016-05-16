@@ -6,6 +6,7 @@ const express = require('express');
 const hanzi = require('hanzi');
 const ChineseDocument = require('./document');
 const hskWords = require('./hsk.json');
+//const unihan = require('./data.json');
 const hskCharacters = [uniqueHSK(1), uniqueHSK(2), uniqueHSK(3), uniqueHSK(4), uniqueHSK(5), uniqueHSK(6)];
 
 hanzi.start();
@@ -69,25 +70,15 @@ fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
         }
 
-        const pages = 20;
+        const pages = 1;
         const value = Math.sqrt(characterList.length / (pages * 1.414));
-        const columns = Math.floor(value);
+        const columns = Math.ceil(value);
         const lines = Math.ceil(1.414 * value);
-
-        console.log(characterList.length);
+        console.log(`There are ${characterList.length} distincts characters`);
         const app = express();
         app.get('/', (req, res) => {
-            console.log(characterList.length);
             const document = new ChineseDocument(lines, columns);
             document.pipe(res);
-
-            for (let [index, character] of characterList.entries()) {
-                document.character(character, Math.floor(index / 10) % 10, index % 10);
-                if (index != 0 && index % 100 == 0) {
-                    document.addPage();
-                }
-            }
-            document.end();
             document.render(characterList);
         });
         app.listen(80);
