@@ -5,13 +5,52 @@ const csv = require('fast-csv');
 const express = require('express');
 const hanzi = require('hanzi');
 const ChineseDocument = require('./document');
+const hskWords = require('./hsk.json');
+const hskCharacters = [uniqueHSK(1), uniqueHSK(2), uniqueHSK(3), uniqueHSK(4), uniqueHSK(5), uniqueHSK(6)];
 
 hanzi.start();
 const characters = new Map();
+const words = new Set();
 
+function uniqueCharacters(words, existing = new Set()) {
+    for (const word of words) {
+        for (const character of word) {
+            existing.add(character);
+        }
+    }
+    return existing;
+}
 
-fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
+function uniqueHSK(level) {
+    let unique = new Set();
+    for (const wordsForLevel of hskWords.slice(0, level)) {
+        unique = uniqueCharacters(wordsForLevel, unique);
+    }
+    return unique;
+}
+
+function missingHSK(level, knownCharacters) {
+    const missingCharacters = new Set();
+    for (const shouldKnow of uniqueHSK(level)) {
+        if (!knownCharacters.has(shouldKnow)) {
+            missingCharacters.add(shouldKnow);
+        }
+    }
+    return missingCharacters;
+}
+
+function hskLevel(hsk, word) {
+    for (let [index, list] of hsk.entries()) {
+        if (list.indexOf(word) != -1) {
+            return index + 1;
+        }
+    }
+    return 0;
+}
+
+fs.createReadStream("flash-1604161443.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
+        words.add(word);
         for (const character of word) {
             const entry = characters.get(character) || {character: character, words: new Set(), pinyin: hanzi.getPinyin(character)};
             entry.words.add(word);
@@ -20,6 +59,16 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
     })
     .on("end",() => {
         const characterList = [...characters.values()];
+        const knownSet = new Set(characters.keys());
+
+        for (let level = 1; level <= 6; level++) {
+            const missing = missingHSK(level, knownSet).size;
+            const unique = uniqueHSK(level).size;
+            const completeRatio = Math.round(100 * (1 - missing / unique));
+
+            console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
+        }
+
         const app = express();
         app.get('/', (req, res) => {
             const document = new ChineseDocument();
@@ -31,7 +80,6 @@ fs.createReadStream("data.txt").pipe(csv({delimiter: '\t'}))
                     document.addPage();
                 }
             }
-
             document.end();
         });
         app.listen(80);
