@@ -3,4 +3,8 @@ html
     body
         form(action='/generate' method='post')
             textarea(name='characters', rows='40', cols='150')
+            input(name='columns' value='15')
+            input(name='lines' value='15')
+            input(name='size' value='A4')
+            input(name='layout' value='portrait')
             input(type='submit')

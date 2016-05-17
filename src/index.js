@@ -19,7 +19,7 @@ const colors = {
 }
 
 function tone(pinyin) {
-    const tones = [/\u0304/g, /\u0301/g, /\u030C/g, /\u0300/g];
+    const tones = [/\u0304/, /\u0301/, /\u030C/, /\u0300/];
     let normalizedPinyin = pinyin.normalize('NFD');
     for (let index = 0; index < 4; index++) {
         if (tones[index].test(normalizedPinyin)) {
@@ -118,30 +118,29 @@ fs.createReadStream("./src/data/flash-17mai2016.txt").pipe(csv({delimiter: '\t'}
             res.render('index.pug');
         });
         app.post('/generate', (req, res) => {
-            console.log(req.body.characters);
-            res.redirect('/');
-
-
-            /**const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
+            const document = new Poster({size: req.body.size, layout: req.body.layout}, req.body.lines, req.body.columns);
             document.pipe(res);
 
-            for (const character of characterList) {
+            for (const character of req.body.characters.split(/[,;\t]/)) {
+                if (!unihan[character]) {
+                    console.log(`No information about character ${character}`);
+                }
+
                 document.next((document, cell) => {
                     document.font('chinese');
                     document.fontSize(cell.fit(0.60));
-                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
-                    document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
+                    document.fillColor(colors[tone(unihan[character].pinyin[0])]);
+                    document.text(character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
-                    document.font(`calibri.ttf`);
+                    document.font(`fonts/calibri.ttf`);
                     document.fillColor('black');
                     document.fontSize(cell.fit(0.15));
 
-                    document.text(pinyin(unihan[character.character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
-                    document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: 10, align: 'center', ellipsis: true});
-                    document.text(character.words.size, 0, 0, {width: cell.width, height: cell.fit(0.10), align: 'left'});
+                    document.text(pinyin(unihan[character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
+                    document.text(definition(unihan[character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: 10, align: 'center', ellipsis: true});
                 });
             }
-            document.end();*/
+            document.end();
         });
         app.get('/download', (req, res) => {
             const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
