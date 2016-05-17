@@ -51,6 +51,7 @@ function hskLevel(hsk, word) {
 
 fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
+        if (!word) return;
         words.add(word);
         for (const character of word) {
             const entry = characters.get(character) || {character: character, words: new Set(), pinyin: hanzi.getPinyin(character)};
@@ -77,7 +78,7 @@ fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
         console.log(`There are ${characterList.length} distincts characters`);
         const app = express();
         app.get('/', (req, res) => {
-            const document = new ChineseDocument(22, 15);
+            const document = new ChineseDocument(21, 15);
             document.pipe(res);
             document.render(characterList);
         });
