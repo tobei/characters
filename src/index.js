@@ -3,10 +3,12 @@
 const fs = require('fs');
 const csv = require('fast-csv');
 const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const Poster = require('./poster_document');
-const hskWords = require('./hsk.json');
-const unihan = require('./unihan.json');
+const hskWords = require('./data/hsk.json');
+const unihan = require('./data/unihan.json');
 
 const colors = {
     '1': 'cornflowerblue',
@@ -80,7 +82,7 @@ function hskLevel(hsk, word) {
     return 0;
 }
 
-fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
+fs.createReadStream("./src/data/flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
         if (!word) return;
         words.add(word);
@@ -91,7 +93,7 @@ fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
         }
     })
     .on("end",() => {
-        const characterList = [...characters.values()];
+        let characterList = [...characters.values()];
         const knownSet = new Set(characters.keys());
 
         for (let level = 1; level <= 6; level++) {
@@ -102,14 +104,25 @@ fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
         }
 
-        const pages = 2;
-        const value = Math.sqrt(characterList.length / (pages * 1.414));
-        const columns = Math.floor(value);
-        const lines = Math.ceil(1.414 * value);
         console.log(`There are ${characterList.length} distincts characters`);
+
+        characterList = characterList.sort((element1, element2) => element2.words.size - element1.words.size);
+
+
         const app = express();
+        app.set('views', path.join(__dirname, '../views'));
+        app.set('view engine', 'pug');
+        app.use(bodyParser.urlencoded({extended: true, limit: false}));
+
         app.get('/', (req, res) => {
-            const document = new Poster({size: 'A3', layout: 'landscape'}, 21, 30);
+            res.render('index.pug');
+        });
+        app.post('/generate', (req, res) => {
+            console.log(req.body.characters);
+            res.redirect('/');
+
+
+            /**const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
             document.pipe(res);
 
             for (const character of characterList) {
@@ -120,6 +133,28 @@ fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
                     document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
                     document.font(`calibri.ttf`);
+                    document.fillColor('black');
+                    document.fontSize(cell.fit(0.15));
+
+                    document.text(pinyin(unihan[character.character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
+                    document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: 10, align: 'center', ellipsis: true});
+                    document.text(character.words.size, 0, 0, {width: cell.width, height: cell.fit(0.10), align: 'left'});
+                });
+            }
+            document.end();*/
+        });
+        app.get('/download', (req, res) => {
+            const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
+            document.pipe(res);
+
+            for (const character of characterList) {
+                document.next((document, cell) => {
+                    document.font('chinese');
+                    document.fontSize(cell.fit(0.60));
+                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
+                    document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
+
+                    document.font(`fonts/calibri.ttf`);
                     document.fillColor('black');
                     document.fontSize(cell.fit(0.15));
 

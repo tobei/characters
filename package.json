@@ -9,8 +9,10 @@
   "author": "Remy Drijkoningen",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "fast-csv": "^1.1.0",
-    "pdfkit": "^0.7.2"
+    "pdfkit": "^0.7.2",
+    "pug": "^2.0.0-alpha7"
   }
 }
