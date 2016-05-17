@@ -3,8 +3,8 @@
 const ChineseDocument = require('./chinese_document');
 
 class PosterDocument extends ChineseDocument {
-    constructor(lines, columns) {
-        super({size: 'A4'});
+    constructor(options, lines, columns) {
+        super(options);
 
         this.grid = {
             lines: lines,
@@ -24,8 +24,8 @@ class PosterDocument extends ChineseDocument {
         }
 
         this.metrics = {
-            width: Math.floor((595 - 2 * this.offsets.margin.horizontal) / this.grid.columns),
-            height: Math.floor((842 - 2 * this.offsets.margin.vertical) / this.grid.lines)
+            width: Math.floor((this.page.width - 2 * this.offsets.margin.horizontal) / this.grid.columns),
+            height: Math.floor((this.page.height - 2 * this.offsets.margin.vertical) / this.grid.lines)
         }
 
         this.index = 0;
