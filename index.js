@@ -78,7 +78,7 @@ fs.createReadStream("flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
         console.log(`There are ${characterList.length} distincts characters`);
         const app = express();
         app.get('/', (req, res) => {
-            const document = new ChineseDocument(21, 15);
+            const document = new ChineseDocument(1, 1);
             document.pipe(res);
             document.render(characterList);
         });
