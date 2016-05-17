@@ -82,7 +82,7 @@ function hskLevel(hsk, word) {
     return 0;
 }
 
-fs.createReadStream("./src/data/flash-17mai2016.txt").pipe(csv({delimiter: '\t'}))
+fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
         if (!word) return;
         words.add(word);
@@ -150,10 +150,11 @@ fs.createReadStream("./src/data/flash-17mai2016.txt").pipe(csv({delimiter: '\t'}
                 document.next((document, cell) => {
                     document.font('chinese');
                     document.fontSize(cell.fit(0.60));
+                    console.log(character.character);
                     document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
                     document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
-                    document.font(`fonts/calibri.ttf`);
+                    document.font(`../fonts/calibri.ttf`);
                     document.fillColor('black');
                     document.fontSize(cell.fit(0.15));
 

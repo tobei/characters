@@ -13,7 +13,7 @@ class ChineseDocument extends PDF {
         if (name == 'chinese') {
             if (this.counter++ % 60 == 0) {
                 delete this._fontFamilies['KaiTi'];
-                this.registerFont(`simkai_${++this.sequence}`, 'fonts/simkai.ttf');
+                this.registerFont(`simkai_${++this.sequence}`, '../fonts/simkai.ttf');
             }
             super.font(`simkai_${this.sequence}`);
         } else {
