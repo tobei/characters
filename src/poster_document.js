@@ -24,8 +24,8 @@ class PosterDocument extends ChineseDocument {
         }
 
         this.metrics = {
-            width: Math.floor((this.page.width - 2 * this.offsets.margin.horizontal) / this.grid.columns),
-            height: Math.floor((this.page.height - 2 * this.offsets.margin.vertical) / this.grid.lines)
+            width: (this.page.width - 2 * this.offsets.margin.horizontal) / this.grid.columns,
+            height: (this.page.height - 2 * this.offsets.margin.vertical) / this.grid.lines
         }
 
         this.index = 0;

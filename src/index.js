@@ -144,9 +144,9 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
             document.end();
         });**/
         app.get('/download', (req, res) => {
-            //const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
+            const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
             //const document = new Poster({size: 'A3', layout: 'landscape'}, 22, 30);
-            const document = new Poster({size: 'A4', layout: 'landscape'}, 2, 2);
+            //const document = new Poster({size: 'A4', layout: 'portrait'}, 1, 1);
 
             document.pipe(res);
             for (let character of characterList) {
