@@ -144,18 +144,17 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
             document.end();
         });**/
         app.get('/download', (req, res) => {
-            const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
+            //const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
+            //const document = new Poster({size: 'A3', layout: 'landscape'}, 22, 30);
+            const document = new Poster({size: 'A4', layout: 'landscape'}, 2, 2);
+
             document.pipe(res);
             for (let character of characterList) {
                 document.next((document, cell) => {
                     document.font('chinese');
                     document.fontSize(cell.fit(0.60));
-                    let data = unihan[character.character];
-                    if (data.pinyin.length == 0) {
-                        console.log(`no data for ${JSON.stringify(data, null, 2)}`);
-                    }
 
-                    document.fillColor(colors[tone(data.pinyin[0])]);
+                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
                     document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
                     document.font(`fonts/calibri.ttf`);
@@ -164,7 +163,7 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
 
                     document.text(pinyin(unihan[character.character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
                     document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: 10, align: 'center', ellipsis: true});
-                    document.text(character.words.size, 0, 0, {width: cell.width, height: cell.fit(0.10), align: 'left'});
+                    document.text(character.words.size, 0, 0, {width: cell.width, align: 'left'});
                 });
             }
             document.end();
