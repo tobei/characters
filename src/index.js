@@ -30,11 +30,11 @@ function tone(pinyin) {
 }
 
 function pinyin(pinyins) {
-    return pinyins.splice(0, 2).join(',');
+    return Array.from(pinyins).splice(0, 2).join(',');
 }
 
 function definition(definitions) {
-    return definitions.splice(0, 2).map(majorDefinition => {
+    return Array.from(definitions).map(majorDefinition => {
         return majorDefinition.split(',')[0];
     }).join(',');
 }
@@ -82,7 +82,7 @@ function hskLevel(hsk, word) {
     return 0;
 }
 
-fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
+fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
         if (!word) return;
         words.add(word);
@@ -94,6 +94,7 @@ fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
     })
     .on("end",() => {
         let characterList = [...characters.values()];
+
         const knownSet = new Set(characters.keys());
 
         for (let level = 1; level <= 6; level++) {
@@ -106,7 +107,7 @@ fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
 
         console.log(`There are ${characterList.length} distincts characters`);
 
-        characterList = characterList.sort((element1, element2) => element2.words.size - element1.words.size);
+        characterList.sort((element1, element2) => element2.words.size - element1.words.size);
 
 
         const app = express();
@@ -117,7 +118,7 @@ fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
         app.get('/', (req, res) => {
             res.render('index.pug');
         });
-        app.post('/generate', (req, res) => {
+        /**app.post('/generate', (req, res) => {
             const document = new Poster({size: req.body.size, layout: req.body.layout}, req.body.lines, req.body.columns);
             document.pipe(res);
 
@@ -141,20 +142,23 @@ fs.createReadStream("data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
                 });
             }
             document.end();
-        });
+        });**/
         app.get('/download', (req, res) => {
             const document = new Poster({size: 'A4', layout: 'portrait'}, 21, 15);
             document.pipe(res);
-
-            for (const character of characterList) {
+            for (let character of characterList) {
                 document.next((document, cell) => {
                     document.font('chinese');
                     document.fontSize(cell.fit(0.60));
-                    console.log(character.character);
-                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
+                    let data = unihan[character.character];
+                    if (data.pinyin.length == 0) {
+                        console.log(`no data for ${JSON.stringify(data, null, 2)}`);
+                    }
+
+                    document.fillColor(colors[tone(data.pinyin[0])]);
                     document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
-                    document.font(`../fonts/calibri.ttf`);
+                    document.font(`fonts/calibri.ttf`);
                     document.fillColor('black');
                     document.fontSize(cell.fit(0.15));
 
