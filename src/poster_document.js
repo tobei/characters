@@ -45,9 +45,9 @@ class PosterDocument extends ChineseDocument {
                 page: this.index % this.grid.size,
                 height: this.metrics.height,
                 width: this.metrics.width,
-                fit : (ratio) => {
-                    return Math.floor(ratio * Math.min(this.metrics.width, this.metrics.height));
-                }
+                fit: ratio => Math.floor(ratio * Math.min(this.metrics.width, this.metrics.height)),
+                h: ratio => Math.floor(ratio * this.metrics.height),
+                w: ratio => Math.floor(ratio * this.metrics.width)
             }
             const translation = {
                 horizontal: this.offsets.margin.horizontal + cell.column * cell.width,

@@ -30,7 +30,7 @@ function tone(pinyin) {
 }
 
 function pinyin(pinyins) {
-    return Array.from(pinyins).splice(0, 2).join(',');
+    return Array.from(pinyins).splice(0, 2).join(', ');
 }
 
 function definition(definitions) {
@@ -82,7 +82,7 @@ function hskLevel(hsk, word) {
     return 0;
 }
 
-fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'}))
+fs.createReadStream("src/data/flash-final-s.txt").pipe(csv({delimiter: '\t'}))
     .on("data", ([word]) => {
         if (!word) return;
         words.add(word);
@@ -103,6 +103,7 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
             const completeRatio = Math.round(100 * (1 - missing / unique));
 
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
+            console.log(missingHSK(level, knownSet));
         }
 
         console.log(`There are ${characterList.length} distincts characters`);
@@ -144,8 +145,8 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
             document.end();
         });**/
         app.get('/download', (req, res) => {
-            const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
-            //const document = new Poster({size: 'A3', layout: 'landscape'}, 22, 30);
+            //const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
+            const document = new Poster({size: 'A3', layout: 'landscape'}, 21, 31);
             //const document = new Poster({size: 'A4', layout: 'portrait'}, 1, 1);
 
             document.pipe(res);
@@ -162,12 +163,48 @@ fs.createReadStream("src/data/flash-1605172215.txt").pipe(csv({delimiter: '\t'})
                     document.fontSize(cell.fit(0.15));
 
                     document.text(pinyin(unihan[character.character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
-                    document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: 10, align: 'center', ellipsis: true});
-                    document.text(character.words.size, 0, 0, {width: cell.width, align: 'left'});
+                    document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: cell.fit(0.15), align: 'center', ellipsis: true});
+                    document.text(character.words.size, 0, 0, {width: cell.width, align: 'left', lineBreak: false});
                 });
             }
             document.end();
         });
+        app.get('/download2', (req, res) => {
+            //const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
+            const document = new Poster({size: 'A3', layout: 'landscape'}, 10, 30);
+            //const document = new Poster({size: 'A4', layout: 'portrait'}, 1, 1);
+
+            document.pipe(res);
+            for (let character of characterList) {
+                document.next((document, cell) => {
+                    document.font('chinese');
+                    document.fontSize(cell.fit(1.00));
+
+                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
+                    document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
+
+                    document.font('chinese');
+                    document.fillColor('black');
+                    document.fontSize(cell.h(0.15));
+
+
+
+
+
+                });
+
+                document.next((document, cell) => {
+                    let usage = [...character.words].filter(word => word.length > 1).sort((word1, word2) => word1.length - word2.length);
+                    document.font('chinese');
+                    document.fillColor('black');
+                    document.fontSize(cell.fit(0.15));
+                    document.text(usage.join(','), 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center', ellipsis: true});
+
+                });
+            }
+            document.end();
+        });
+
         app.listen(80);
     })
 
