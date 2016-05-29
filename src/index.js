@@ -146,7 +146,7 @@ fs.createReadStream("src/data/flash-final-s.txt").pipe(csv({delimiter: '\t'}))
         });**/
         app.get('/download', (req, res) => {
             //const document = new Poster({size: 'A4', layout: 'portrait'}, 22, 15);
-            const document = new Poster({size: 'A3', layout: 'landscape'}, 21, 31);
+            const document = new Poster({size: 'A3', layout: 'landscape'}, 22, 29);
             //const document = new Poster({size: 'A4', layout: 'portrait'}, 1, 1);
 
             document.pipe(res);

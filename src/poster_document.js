@@ -28,6 +28,11 @@ class PosterDocument extends ChineseDocument {
             height: (this.page.height - 2 * this.offsets.margin.vertical) / this.grid.lines
         }
 
+        this.font('fonts/Righteous-Regular.ttf');
+        this.fontSize(20);
+        const message = 'Marie Haps 2014-2016';
+        this.fillColor('black');
+        this.text(message, this.page.width - this.offsets.margin.horizontal - this.widthOfString(message), this.page.height - this.offsets.margin.vertical - this.metrics.height + 7, {lineBreak: false});
         this.index = 0;
     }
 
