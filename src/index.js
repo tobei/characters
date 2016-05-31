@@ -9,6 +9,10 @@ const bodyParser = require('body-parser');
 const Poster = require('./poster_document');
 const hskWords = require('./data/hsk.json');
 const unihan = require('./data/unihan.json');
+const npcr = uniqueCharacters(require('./data/npcr.json'));
+
+console.log(npcr);
+console.log(npcr.size);
 
 const colors = {
     '1': 'cornflowerblue',
@@ -103,7 +107,6 @@ fs.createReadStream("src/data/flash-final-s.txt").pipe(csv({delimiter: '\t'}))
             const completeRatio = Math.round(100 * (1 - missing / unique));
 
             console.log(`HSK ${level}: you miss ${missing} characters out of ${unique}. Complete ratio: ${completeRatio}%`);
-            console.log(missingHSK(level, knownSet));
         }
 
         console.log(`There are ${characterList.length} distincts characters`);
@@ -152,11 +155,19 @@ fs.createReadStream("src/data/flash-final-s.txt").pipe(csv({delimiter: '\t'}))
             document.pipe(res);
             for (let character of characterList) {
                 document.next((document, cell) => {
+                    const toneColor = colors[tone(unihan[character.character].pinyin[0])];
+                    if (npcr.has(character.character)) {
+                        console.log('hello');
+                        document.fillColor(toneColor);
+                        document.fillOpacity(0.2);
+                        document.strokeOpacity(1.0);
+                        document.roundedRect(1, 1, cell.width - 1, cell.height - 1, 3);
+                        document.fill();
+                    }
                     document.font('chinese');
                     document.fontSize(cell.fit(0.60));
-
-                    document.fillColor(colors[tone(unihan[character.character].pinyin[0])]);
-                    document.text(character.character, 0, 0, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
+                    document.fillColor(toneColor);
+                    document.text(character.character, 0, 1, {lineBreak: false, width: cell.width, height: cell.height, align: 'center'});
 
                     document.font(`fonts/calibri.ttf`);
                     document.fillColor('black');
@@ -164,7 +175,7 @@ fs.createReadStream("src/data/flash-final-s.txt").pipe(csv({delimiter: '\t'}))
 
                     document.text(pinyin(unihan[character.character].pinyin), 0, cell.fit(0.60), {width: cell.width, align: 'center'});
                     document.text(definition(unihan[character.character].definition), 0, cell.fit(0.75), {lineBreak: true, width: cell.width, height: cell.fit(0.15), align: 'center', ellipsis: true});
-                    document.text(character.words.size, 0, 0, {width: cell.width, align: 'left', lineBreak: false});
+                    document.text(character.words.size, 5, 5, {width: cell.width, align: 'left', lineBreak: false});
                 });
             }
             document.end();
